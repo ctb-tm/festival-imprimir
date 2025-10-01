@@ -9,7 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Documentação: Definição das variáveis de cores para fácil manutenção */
         :root {
             --cor-primaria: #5a54d1;
             --cor-secundaria: #c8ea41;
@@ -21,12 +20,7 @@
             --cor-bronze: #cd7f32;
         }
 
-        /* Documentação: Reset básico de estilos para consistência entre navegadores */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: 'Poppins', sans-serif;
@@ -35,231 +29,112 @@
             padding: 2rem 0;
         }
 
-        /* Documentação: Container principal que simula a folha A4 em ecrã */
         .container-a4 {
-            width: 100%;
-            max-width: 1123px;
-            min-height: 794px;
-            background: var(--cor-texto-claro);
-            padding: 2.5rem;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 100%; max-width: 1123px; min-height: 794px;
+            background: var(--cor-texto-claro); padding: 2.5rem;
+            border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             margin: 2rem auto;
         }
 
-        /* Documentação: Estilos do cabeçalho */
-        header {
-            text-align: center;
-            padding-bottom: 1.5rem;
-            margin-bottom: 2rem;
-        }
+        header { text-align: center; padding-bottom: 1.5rem; margin-bottom: 2rem; }
         
-        header img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 1.5rem;
+        header .imagem-principal {
+            width: 100%; height: 250px; object-fit: cover;
+            border-radius: 10px; margin-bottom: 1.5rem;
         }
 
-        header h1 {
-            color: var(--cor-primaria);
-            font-size: 2.8rem;
-            font-weight: 700;
-        }
-
-        header .subtitulo {
-            font-size: 1.2rem;
-            font-weight: 300;
-            margin-top: 0.5rem;
-        }
-
-        /* Documentação: Estilos padrão para os títulos de cada secção */
-        .titulo-seccao {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--cor-texto-escuro);
-            margin-bottom: 1.5rem;
-            text-align: center;
-            border-bottom: 2px solid var(--cor-secundaria);
-            padding-bottom: 0.5rem;
-            display: inline-block;
-        }
-        
-        .center-title {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        
-        .sobre-evento p {
-            text-align: center;
-            font-size: 1rem;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto 2.5rem auto;
-        }
-
-        /* Documentação: Layout em grelha para os cartões de informação */
-        .grelha {
+        /* NOVO: Estilos para alinhar a logomarca e o título */
+        .header-titulo {
             display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
             justify-content: center;
-            margin-bottom: 2.5rem;
+            align-items: center;
+            gap: 1.5rem; /* Espaço entre a logomarca e o título */
+            flex-wrap: wrap; /* Permite quebrar a linha em ecrãs pequenos */
         }
+        
+        .header-titulo .logo-ctb {
+            height: 70px; /* Altura da logomarca */
+            width: auto;
+        }
+
+        .header-titulo h1 { color: var(--cor-primaria); font-size: 2.8rem; font-weight: 700; margin: 0; }
+        header .subtitulo { font-size: 1.2rem; font-weight: 300; margin-top: 0.5rem; }
+
+        .titulo-seccao {
+            font-size: 1.8rem; font-weight: 600; color: var(--cor-texto-escuro);
+            margin-bottom: 1.5rem; text-align: center;
+            border-bottom: 2px solid var(--cor-secundaria);
+            padding-bottom: 0.5rem; display: inline-block;
+        }
+        
+        .center-title { text-align: center; margin-bottom: 2rem; }
+        .sobre-evento p { text-align: center; font-size: 1rem; line-height: 1.6; max-width: 800px; margin: 0 auto 2.5rem auto; }
+
+        .grelha { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-bottom: 2.5rem; }
         
         .cartao {
-            background-color: var(--cor-primaria);
-            color: var(--cor-texto-claro);
-            border-radius: 10px;
-            padding: 1.5rem;
-            text-align: center;
-            flex-basis: 180px;
-            flex-grow: 1;
+            background-color: var(--cor-primaria); color: var(--cor-texto-claro);
+            border-radius: 10px; padding: 1.5rem; text-align: center;
+            flex-basis: 180px; flex-grow: 1;
         }
 
-        .cartao .numero, .cartao .icone {
-            font-size: 3rem;
-            font-weight: 700;
-            line-height: 1.1;
+        .cartao .numero, .cartao .icone { font-size: 3rem; font-weight: 700; line-height: 1.1; }
+        .cartao .descricao { font-size: 0.9rem; font-weight: 300; }
+        .cartao.secundario { background-color: #eef1f5; color: var(--cor-texto-escuro); }
+        .cartao.secundario .icone { color: var(--cor-primaria); font-size: 2.5rem; }
+
+        .cartao-texto {
+            background-color: #eef1f5; color: var(--cor-texto-escuro);
+            border-radius: 10px; padding: 1.5rem; text-align: left;
+            flex-basis: 280px; flex-grow: 1;
         }
-        
-        .cartao .descricao {
-            font-size: 0.9rem;
-            font-weight: 300;
-        }
-        
-        .cartao.secundario {
-            background-color: #eef1f5;
-            color: var(--cor-texto-escuro);
-        }
-        
-        .cartao.secundario .icone {
-            color: var(--cor-primaria);
-            font-size: 2.5rem;
-        }
-        
-        /* Documentação: Estilo de destaque para a Cota Naming Rights */
+        .cartao-texto h3 { font-size: 1.1rem; font-weight: 600; color: var(--cor-primaria); margin-bottom: 0.5rem; }
+        .cartao-texto p { font-size: 0.9rem; line-height: 1.5; }
+
         #cota-naming-rights {
-            background: linear-gradient(135deg, var(--cor-primaria), #433d99);
-            color: var(--cor-texto-claro);
-            border-radius: 10px;
-            padding: 2rem;
-            margin-bottom: 2.5rem;
-            text-align: center;
+            background: linear-gradient(135deg, var(--cor-primaria), #433d99); color: var(--cor-texto-claro);
+            border-radius: 10px; padding: 2rem; margin-bottom: 2.5rem; text-align: center;
         }
-        #cota-naming-rights h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            border: none;
-        }
-        #cota-naming-rights .valor {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--cor-secundaria);
-            margin-bottom: 0.2rem;
-        }
-        #cota-naming-rights .percentagem {
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-            opacity: 0.9;
-        }
-        #cota-naming-rights ul {
-            list-style: none;
-            padding: 0;
-            text-align: left;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-         #cota-naming-rights ul li {
-            margin-bottom: 0.75rem;
-            padding-left: 1.5rem;
-            position: relative;
-         }
-         #cota-naming-rights ul li::before {
-            content: '⭐';
-            position: absolute;
-            left: 0;
-            color: var(--cor-ouro);
-         }
+        #cota-naming-rights h2 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; border: none; }
+        #cota-naming-rights .valor { font-size: 1.8rem; font-weight: 700; color: var(--cor-secundaria); margin-bottom: 0.2rem; }
+        #cota-naming-rights .percentagem { font-size: 1rem; margin-bottom: 1.5rem; opacity: 0.9; }
+        #cota-naming-rights ul { list-style: none; padding: 0; text-align: left; max-width: 500px; margin: 0 auto; }
+        #cota-naming-rights ul li { margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative; }
+        #cota-naming-rights ul li::before { content: '⭐'; position: absolute; left: 0; color: var(--cor-ouro); }
 
-        /* Documentação: Container para as cotas Ouro, Prata e Bronze */
-        .cotas-container {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
+        .cotas-container { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
         .cota {
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 1.5rem;
-            flex-basis: 300px;
-            flex-grow: 1;
-            max-width: 350px;
-            display: flex;
-            flex-direction: column;
+            border: 1px solid #ddd; border-radius: 10px; padding: 1.5rem;
+            flex-basis: 300px; flex-grow: 1; max-width: 350px;
+            display: flex; flex-direction: column;
         }
-
-        .cota h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid;
-        }
-
+        .cota h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid; }
         .cota .valor { font-size: 1.3rem; font-weight: 700; color: var(--cor-primaria); margin-bottom: 0.2rem; }
         .cota .percentagem { font-size: 0.9rem; font-weight: 400; margin-bottom: 1rem; }
-
-        /* Documentação: Regras que removem os marcadores das listas das cotas */
-        .cota ul {
-            list-style: none;
-            padding-left: 0;
-            margin-top: 1rem;
-            flex-grow: 1;
-        }
-        
-        .cota ul li {
-            margin-bottom: 0.85rem;
-        }
-        
-        /* Documentação: Cores para os títulos das cotas */
+        .cota ul { list-style: none; padding-left: 0; margin-top: 1rem; flex-grow: 1; }
+        .cota ul li { margin-bottom: 0.85rem; }
         #cota-ouro h3 { border-color: var(--cor-ouro); color: var(--cor-ouro); }
         #cota-prata h3 { border-color: var(--cor-prata); color: var(--cor-prata); }
         #cota-bronze h3 { border-color: var(--cor-bronze); color: var(--cor-bronze); }
-        
-        /* Documentação: Estilos do rodapé */
-        footer {
-            margin-top: 3rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #ddd;
-            text-align: center;
-        }
-        
+        footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #ddd; text-align: center; }
         footer p { font-size: 0.9rem; line-height: 1.5; }
         footer a { color: var(--cor-primaria); text-decoration: none; font-weight: 600; }
         footer a:hover { text-decoration: underline; }
 
-        /* Documentação: Estilos específicos para impressão (formato A4 Paisagem) */
         @media print {
             body { padding: 0; background-color: #fff; }
             .container-a4 {
-                width: 297mm;
-                height: 210mm;
-                margin: 0;
-                box-shadow: none;
-                border-radius: 0;
-                padding: 15mm;
+                width: 297mm; height: 210mm; margin: 0;
+                box-shadow: none; border-radius: 0; padding: 15mm;
                 page-break-after: always;
             }
             .container-a4:last-child { page-break-after: avoid; }
-            header img { height: 180px; }
-            header h1 { font-size: 24pt; }
+            header .imagem-principal { height: 180px; }
+            .header-titulo .logo-ctb { height: 60px; }
+            .header-titulo h1 { font-size: 22pt; }
             .titulo-seccao { font-size: 16pt; }
             body, p, li { font-size: 9pt; }
+            .cartao-texto p { font-size: 8.5pt; }
         }
     </style>
 </head>
@@ -267,14 +142,57 @@
 
     <main class="container-a4" id="pagina-1">
         <header>
-            <img src="corrida.jpg" alt="Imagem de pessoas a correr no festival">
-            <h1>Festival de Esportes da Bahia</h1>
+            <img src="corrida.jpg" alt="Imagem de pessoas a correr no festival" class="imagem-principal">
+            
+            <div class="header-titulo">
+                <img src="ctb.png" alt="Logomarca do Clube dos Tenistas da Bahia" class="logo-ctb">
+                <h1>Festival de Esportes da Bahia</h1>
+            </div>
+
             <p class="subtitulo">Uma Celebração de Saúde, Lazer e Comunidade por todo o Estado</p>
         </header>
+
         <section class="sobre-evento">
             <div class="center-title"><h2 class="titulo-seccao">Sobre o Evento</h2></div>
-            <p>O Festival de Esportes da Bahia é um evento itinerante e gratuito, projetado para conectar pessoas, inspirar um estilo de vida mais ativo e combater o sedentarismo. Com foco no público adulto e idoso, a nossa missão é promover a integração social num ambiente seguro e acolhedor.</p>
+            <p>O Festival de Esportes da Bahia nasce com o propósito de movimentar o estado, conectar pessoas e inspirar um estilo de vida mais ativo e saudável para todos. A nossa missão é levar a cada cidade baiana uma experiência única, combatendo o sedentarismo e promovendo a integração social.</p>
         </section>
+
+        <section class="modalidades">
+            <div class="center-title"><h2 class="titulo-seccao">Modalidades Oferecidas: Atividades para Todos os Ritmos</h2></div>
+            <div class="grelha">
+                <div class="cartao-texto">
+                    <h3>Corrida de Rua (5km e 10km)</h3>
+                    <p>Para os amantes da adrenalina, da superação e da energia contagiante das corridas de rua. Percursos com desafios e segurança para os atletas.</p>
+                </div>
+                <div class="cartao-texto">
+                    <h3>Caminhada Participativa</h3>
+                    <p>Um convite para todas as idades e ritmos, para se exercitar de forma leve e social.</p>
+                </div>
+                <div class="cartao-texto">
+                    <h3>Arena Lazer & Esporte</h3>
+                    <p>Após a prova, arena interativa com mesas de Tênis de Mesa e Ping-Pong para socialização e diversão ativa.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="metodologia">
+            <div class="center-title"><h2 class="titulo-seccao">Metodologia: Como o Festival Acontece</h2></div>
+            <div class="grelha">
+                <div class="cartao-texto">
+                    <h3>Projeto Itinerante e Adaptável</h3>
+                    <p>Viaja por toda a Bahia, incentivando esporte, turismo e economia local, adaptando-se à realidade de cada cidade.</p>
+                </div>
+                <div class="cartao-texto">
+                    <h3>Inclusão como Pilar Central</h3>
+                    <p>Inscrições gratuitas e foco em adultos e idosos para promover saúde e envelhecimento ativo.</p>
+                </div>
+                <div class="cartao-texto">
+                    <h3>Estrutura Completa para o Participante</h3>
+                    <p>Inscrição online, kit completo, medalha, arena de convivência com massoterapia inclusiva e café saudável.</p>
+                </div>
+            </div>
+        </section>
+        
         <section class="numeros-projeto">
             <div class="center-title"><h2 class="titulo-seccao">Números do Projeto</h2></div>
             <div class="grelha">
@@ -286,21 +204,21 @@
                 <div class="cartao"><div class="numero">100%</div><div class="descricao">Gratuito para Participantes</div></div>
             </div>
         </section>
+    </main>
+
+    <main class="container-a4" id="pagina-2">
         <section class="porque-patrocinar">
             <div class="center-title"><h2 class="titulo-seccao">Por que Patrocinar o Festival?</h2></div>
             <div class="grelha">
-                <div class="cartao secundario"><div class="icone">📢</div><div class="descricao"><strong>Visibilidade Massiva</strong><br>Exposição para milhares de participantes e cobertura mediática regional.</div></div>
+                <div class="cartao secundario"><div class="icone">📢</div><div class="descricao"><strong>Visibilidade Massiva</strong><br>Exposição para mais de 3.600 participantes e cobertura mediática regional.</div></div>
                 <div class="cartao secundario"><div class="icone">❤️</div><div class="descricao"><strong>Valores Positivos</strong><br>Associação da marca à saúde, bem-estar, inclusão e qualidade de vida.</div></div>
                 <div class="cartao secundario"><div class="icone">📰</div><div class="descricao"><strong>Mídia Espontânea</strong><br>Potencial de conteúdo orgânico e cobertura jornalística em múltiplas cidades.</div></div>
                 <div class="cartao secundario"><div class="icone">🌍</div><div class="descricao"><strong>Responsabilidade Social</strong><br>Compromisso ESG e impacto positivo direto nas comunidades.</div></div>
             </div>
         </section>
-    </main>
 
-    <main class="container-a4" id="pagina-2">
         <section class="patrocinio">
             <div class="center-title"><h2 class="titulo-seccao">Cotas de Patrocínio</h2></div>
-            
             <div id="cota-naming-rights">
                 <h2>Cota Naming Rights</h2>
                 <p class="valor">R$ 940.459,52</p>
@@ -314,7 +232,6 @@
                     <li>Relatório de impacto mais completo</li>
                 </ul>
             </div>
-
             <div class="cotas-container">
                 <div class="cota" id="cota-ouro">
                     <h3>Cota Ouro</h3>
