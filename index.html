@@ -33,7 +33,6 @@
             padding: 2rem 0;
         }
 
-        /* Documentação: Para visualização em ecrã, o layout é flexível. O dimensionamento A4 é ativado na impressão. */
         .container-a4 {
             width: 100%;
             max-width: 1123px;
@@ -111,12 +110,6 @@
             text-align: center;
             flex-basis: 180px;
             flex-grow: 1;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .cartao:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(90, 84, 209, 0.3);
         }
 
         .cartao .numero, .cartao .icone {
@@ -139,6 +132,52 @@
             color: var(--cor-primaria);
             font-size: 2.5rem;
         }
+        
+        /* NOVO: Estilo para o container da nova cota principal */
+        #cota-naming-rights {
+            background: linear-gradient(135deg, var(--cor-primaria), #433d99);
+            color: var(--cor-texto-claro);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+        #cota-naming-rights h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            border: none;
+        }
+        #cota-naming-rights .valor {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--cor-secundaria);
+            margin-bottom: 0.2rem;
+        }
+        #cota-naming-rights .percentagem {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+        #cota-naming-rights ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+         #cota-naming-rights ul li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+         }
+         #cota-naming-rights ul li::before {
+            content: '⭐';
+            position: absolute;
+            left: 0;
+            color: var(--cor-ouro);
+         }
+
 
         .cotas-container {
             display: flex;
@@ -169,7 +208,7 @@
         .cota .valor { font-size: 1.3rem; font-weight: 700; color: var(--cor-primaria); margin-bottom: 0.2rem; }
         .cota .percentagem { font-size: 0.9rem; font-weight: 400; margin-bottom: 1rem; }
 
-        /* ATENÇÃO: As 2 linhas abaixo garantem que as listas NÃO tenham marcadores, como solicitado. */
+        /* GARANTIA: Estas regras asseguram que NENHUMA cota tenha marcadores de lista. */
         .cota ul {
             list-style: none; /* Remove os marcadores */
             padding-left: 0;  /* Remove o espaçamento extra */
@@ -196,30 +235,22 @@
         footer a { color: var(--cor-primaria); text-decoration: none; font-weight: 600; }
         footer a:hover { text-decoration: underline; }
 
-        /* ATENÇÃO: As regras dentro deste bloco formatam e dimensionam a página para impressão, como solicitado. */
         @media print {
             body { padding: 0; background-color: #fff; }
-            
             .container-a4 {
-                /* Dimensionamento exato para A4 Paisagem */
                 width: 297mm;
                 height: 210mm;
-                
                 margin: 0;
                 box-shadow: none;
                 border-radius: 0;
                 padding: 15mm;
                 page-break-after: always;
             }
-            
-            .container-a4:last-child {
-                page-break-after: avoid;
-            }
-
+            .container-a4:last-child { page-break-after: avoid; }
             header img { height: 180px; }
             header h1 { font-size: 24pt; }
             .titulo-seccao { font-size: 16pt; }
-            body, p, li { font-size: 10pt; }
+            body, p, li { font-size: 9pt; } /* Reduzido para garantir o encaixe */
         }
     </style>
 </head>
@@ -231,31 +262,28 @@
             <h1>Festival de Esportes da Bahia</h1>
             <p class="subtitulo">Uma Celebração de Saúde, Lazer e Comunidade por todo o Estado</p>
         </header>
-
         <section class="sobre-evento">
-             <div class="center-title"><h2 class="titulo-seccao">Sobre o Evento</h2></div>
-            <p>O Festival de Esportes da Bahia é um evento itinerante e gratuito, desenhado para conectar pessoas e inspirar um estilo de vida mais ativo. A nossa missão é combater o sedentarismo e promover a integração social, com especial atenção ao público adulto e idoso, num ambiente seguro e acolhedor.</p>
+            <div class="center-title"><h2 class="titulo-seccao">Sobre o Evento</h2></div>
+            <p>O Festival de Esportes da Bahia é um evento itinerante e gratuito, projetado para conectar pessoas, inspirar um estilo de vida mais ativo e combater o sedentarismo[cite: 9, 10, 11]. Com foco no público adulto e idoso, a nossa missão é promover a integração social num ambiente seguro e acolhedor[cite: 10, 11, 23].</p>
         </section>
-
         <section class="numeros-projeto">
-             <div class="center-title"><h2 class="titulo-seccao">Números do Projeto</h2></div>
+            <div class="center-title"><h2 class="titulo-seccao">Números do Projeto</h2></div>
             <div class="grelha">
-                <div class="cartao"><div class="numero">3</div><div class="descricao">Etapas do Festival</div></div>
-                <div class="cartao"><div class="numero">1.200</div><div class="descricao">Participantes por Etapa</div></div>
-                <div class="cartao"><div class="numero">3.600</div><div class="descricao">Total de Participantes</div></div>
-                <div class="cartao"><div class="numero">417</div><div class="descricao">Municípios Baianos</div></div>
-                <div class="cartao"><div class="numero">18+</div><div class="descricao">Foco em Adultos e Idosos</div></div>
-                <div class="cartao"><div class="numero">100%</div><div class="descricao">Gratuito para Participantes</div></div>
+                <div class="cartao"><div class="numero">3</div><div class="descricao">Etapas do Festival [cite: 199]</div></div>
+                <div class="cartao"><div class="numero">1.200</div><div class="descricao">Participantes por Etapa [cite: 191, 192]</div></div>
+                <div class="cartao"><div class="numero">3.600</div><div class="descricao">Total de Participantes [cite: 124, 193, 194]</div></div>
+                <div class="cartao"><div class="numero">417</div><div class="descricao">Municípios Baianos [cite: 124, 200, 201]</div></div>
+                <div class="cartao"><div class="numero">18+</div><div class="descricao">Foco em Adultos e Idosos [cite: 196, 197]</div></div>
+                <div class="cartao"><div class="numero">100%</div><div class="descricao">Gratuito para Participantes [cite: 202, 203]</div></div>
             </div>
         </section>
-
         <section class="porque-patrocinar">
             <div class="center-title"><h2 class="titulo-seccao">Por que Patrocinar o Festival?</h2></div>
             <div class="grelha">
-                <div class="cartao secundario"><div class="icone">📢</div><div class="descricao"><strong>Visibilidade Massiva</strong><br>Exposição para mais de 3.600 participantes e cobertura regional.</div></div>
-                <div class="cartao secundario"><div class="icone">❤️</div><div class="descricao"><strong>Valores Positivos</strong><br>Associação da sua marca à saúde, bem-estar, inclusão e qualidade de vida.</div></div>
-                <div class="cartao secundario"><div class="icone">📰</div><div class="descricao"><strong>Mídia Espontânea</strong><br>Potencial de conteúdo orgânico e cobertura jornalística em múltiplas cidades.</div></div>
-                <div class="cartao secundario"><div class="icone">🌍</div><div class="descricao"><strong>Responsabilidade Social</strong><br>Compromisso ESG e impacto positivo direto nas comunidades atendidas.</div></div>
+                <div class="cartao secundario"><div class="icone">📢</div><div class="descricao"><strong>Visibilidade Massiva</strong><br>Exposição para milhares de participantes e cobertura mediática regional[cite: 211].</div></div>
+                <div class="cartao secundario"><div class="icone">❤️</div><div class="descricao"><strong>Valores Positivos</strong><br>Associação da marca à saúde, bem-estar, inclusão e qualidade de vida[cite: 206, 207].</div></div>
+                <div class="cartao secundario"><div class="icone">📰</div><div class="descricao"><strong>Mídia Espontânea</strong><br>Potencial de conteúdo orgânico e cobertura jornalística em múltiplas cidades[cite: 213, 214].</div></div>
+                <div class="cartao secundario"><div class="icone">🌍</div><div class="descricao"><strong>Responsabilidade Social</strong><br>Compromisso ESG e impacto positivo direto nas comunidades[cite: 215].</div></div>
             </div>
         </section>
     </main>
@@ -263,69 +291,68 @@
     <main class="container-a4" id="pagina-2">
         <section class="patrocinio">
             <div class="center-title"><h2 class="titulo-seccao">Cotas de Patrocínio</h2></div>
+            
+            <div id="cota-naming-rights">
+                <h2>Cota Naming Rights</h2>
+                <p class="valor">R$ 940.459,52</p>
+                <p class="percentagem">100% do valor do projeto</p>
+                <ul>
+                    <li>Direito de nomear o evento (Naming Rights) </li>
+                    <li>Exclusividade de segmento de mercado</li>
+                    <li>Posição de logo principal em 100% dos materiais promocionais [cite: 65, 128]</li>
+                    <li>Destaque principal em toda a cobertura mediática [cite: 69, 131]</li>
+                    <li>Stand principal na arena do evento [cite: 68, 130]</li>
+                    <li>Relatório de impacto mais completo [cite: 70, 132]</li>
+                </ul>
+            </div>
+
             <div class="cotas-container">
                 <div class="cota" id="cota-ouro">
                     <h3>Cota Ouro</h3>
-                    <p class="valor">R$ 470.225,26</p>
-                    <p class="percentagem">50% do Projeto</p>
+                    <p class="valor">R$ 470.225,26 [cite: 64]</p>
+                    <p class="percentagem">50% do Projeto [cite: 64]</p>
                     <ul>
-                        <li>Naming rights do evento</li>
-                        <li>Logo principal em todos os materiais promocionais</li>
-                        <li>Ativações exclusivas e digitais</li>
-                        <li>Stand na arena</li>
-                        <li>Cobertura midiática preferencial</li>
-                        <li>Relatório completo pós-evento</li>
+                        <li>Logo principal em todos os materiais promocionais [cite: 65, 128]</li>
+                        <li>Ativações exclusivas e digitais [cite: 67, 129]</li>
+                        <li>Stand na arena [cite: 68, 130]</li>
+                        <li>Cobertura midiática preferencial [cite: 69, 131]</li>
+                        <li>Relatório completo pós-evento [cite: 70, 132]</li>
                     </ul>
                 </div>
                 <div class="cota" id="cota-prata">
                     <h3>Cota Prata</h3>
-                    <p class="valor">R$ 282.135,16</p>
-                    <p class="percentagem">30% do Projeto</p>
+                    <p class="valor">R$ 282.135,16 [cite: 72]</p>
+                    <p class="percentagem">30% do Projeto [cite: 73]</p>
                     <ul>
-                        <li>Logo em destaque nos materiais oficiais</li>
-                        <li>Ativações presenciais e digitais</li>
-                        <li>Conteúdo exclusivo para redes sociais</li>
-                        <li>Menção em mídias locais</li>
-                        <li>Relatório detalhado de resultados</li>
+                        <li>Logo em destaque nos materiais oficiais [cite: 74, 138]</li>
+                        <li>Ativações presenciais e digitais [cite: 74, 139]</li>
+                        <li>Conteúdo exclusivo para redes sociais [cite: 75, 140]</li>
+                        <li>Menção em mídias locais [cite: 76, 141]</li>
+                        <li>Relatório detalhado de resultados [cite: 77, 142]</li>
                     </ul>
                 </div>
                 <div class="cota" id="cota-bronze">
                     <h3>Cota Bronze</h3>
-                    <p class="valor">R$ 188.090,10</p>
-                    <p class="percentagem">20% do Projeto</p>
+                    <p class="valor">R$ 188.090,10 [cite: 79]</p>
+                    <p class="percentagem">20% do Projeto [cite: 80]</p>
                     <ul>
-                        <li>Logo nos materiais do evento</li>
-                        <li>Presença garantida nas três etapas</li>
-                        <li>Ativação digital e menções em redes sociais</li>
-                        <li>Certificado oficial de parceria</li>
-                        <li>Relatório básico pós-evento</li>
+                        <li>Logo nos materiais do evento [cite: 81, 144]</li>
+                        <li>Presença garantida nas três etapas [cite: 82, 145]</li>
+                        <li>Ativação digital e menções em redes sociais [cite: 83, 146]</li>
+                        <li>Certificado oficial de parceria [cite: 84, 147]</li>
+                        <li>Relatório básico pós-evento [cite: 85, 148]</li>
                     </ul>
                 </div>
             </div>
         </section>
-
-        <section class="estrutura-participante">
-            <div class="center-title"><h2 class="titulo-seccao">Estrutura para o Participante</h2></div>
-            <div class="grelha">
-                 <div class="cartao secundario"><div class="icone">🎟️</div><div class="descricao"><strong>Inscrição Online</strong><br>Gratuita e simplificada</div></div>
-                 <div class="cartao secundario"><div class="icone">👕</div><div class="descricao"><strong>Kit Completo</strong><br>Entregue a todos os inscritos</div></div>
-                 <div class="cartao secundario"><div class="icone">🏅</div><div class="descricao"><strong>Medalha</strong><br>Para celebrar a participação</div></div>
-                 <div class="cartao secundario"><div class="icone">💆</div><div class="descricao"><strong>Arena de Convivência</strong><br>Com massoterapia inclusiva e café</div></div>
-            </div>
-        </section>
-
         <footer>
             <div class="center-title"><h2 class="titulo-seccao">Informações do Projeto</h2></div>
             <p>
-                [cite_start]<strong>Proponente:</strong> CLUBE DOS TENISTAS DA BAHIA (CTB) [cite: 3, 4, 74, 75, 82, 83, 137, 138, 146, 147, 169, 170, 177, 178, 247, 248] <br>
-                [cite_start]<strong>CNPJ:</strong> 23.146.328/0001-16 [cite: 13] | [cite_start]<strong>Nº do Projeto:</strong> 2501213 [cite: 15] <br>
-                [cite_start]<strong>Valor Total Solicitado:</strong> R$ 940.459,52 [cite: 24]
-            </p>
-            <p>
-                [cite_start]<strong>Paulo Carneiro (CEO):</strong> <a href="mailto:paulo@ctb-ba.com.br">paulo@ctb-ba.com.br</a> [cite: 72, 246] | [cite_start]WhatsApp: (71) 98530-4903 [cite: 71, 128, 244]
+                <strong>Proponente:</strong> CLUBE DOS TENISTAS DA BAHIA (CTB) [cite: 41, 42] <br>
+                <strong>CNPJ:</strong> 23.146.328/0001-16 [cite: 43, 44] | <strong>Nº do Projeto:</strong> 2501213 [cite: 45, 46] <br>
+                <strong>Paulo Carneiro (CEO):</strong> <a href="mailto:paulo@ctb-ba.com.br">paulo@ctb-ba.com.br</a> [cite: 103, 159] | WhatsApp: (71) 98530-4903 [cite: 102, 159]
             </p>
         </footer>
     </main>
-
 </body>
 </html>
