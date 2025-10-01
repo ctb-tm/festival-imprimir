@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infográfico: Festival de Esportes da Bahia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- DOCUMENTAÇÃO GERAL DO CSS ---
+         * Este bloco de CSS é responsável por todo o estilo do infográfico.
+         * Foi desenhado para ser 'clean', usando a paleta de cores dos PDFs.
+         * A unidade 'rem' é usada para fontes e espaçamentos, garantindo boa acessibilidade e escalabilidade.
+         * O layout principal é construído com Flexbox para alinhar os elementos de forma responsiva.
+        */
+
+        /* Documentação: Definição de variáveis de cores extraídas dos PDFs para fácil manutenção e consistência. */
+        :root {
+            --cor-primaria: #5a54d1; /* Roxo principal */
+            --cor-secundaria: #c8ea41; /* Verde-lima */
+            --cor-texto-escuro: #2c3e50;
+            --cor-texto-claro: #ffffff;
+            --cor-fundo: #f4f4f9;
+            --cor-ouro: #ffd700;
+            --cor-prata: #c0c0c0;
+            --cor-bronze: #cd7f32;
+        }
+
+        /* Documentação: Reset básico e configuração do corpo da página. */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto-escuro);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        /* Documentação: Container principal que simula a folha A4 Paisagem. */
+        .container-a4 {
+            width: 100%;
+            max-width: 1123px; /* Proporção aproximada de A4 (29.7cm / 2.54 * 96px) */
+            background: var(--cor-texto-claro);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Documentação: Estilos do Cabeçalho */
+        header {
+            text-align: center;
+            border-bottom: 3px solid var(--cor-primaria);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        header h1 {
+            color: var(--cor-primaria);
+            font-size: 2.8rem;
+            font-weight: 700;
+        }
+
+        header .subtitulo {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-top: 0.5rem;
+        }
+
+        /* Documentação: Estilos para os títulos de cada secção. */
+        .titulo-seccao {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--cor-texto-escuro);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        /* Documentação: Secção "Sobre o Evento" */
+        .sobre-evento p {
+            text-align: center;
+            font-size: 1rem;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto 2.5rem auto;
+        }
+
+        /* Documentação: Grelha para os cartões de "Números" e "Modalidades" usando Flexbox. */
+        .grelha {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+        }
+        
+        /* Documentação: Estilo individual dos cartões de destaque. */
+        .cartao {
+            background-color: var(--cor-primaria);
+            color: var(--cor-texto-claro);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            flex-basis: 180px; /* Largura base de cada cartão */
+            flex-grow: 1;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cartao:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(90, 84, 209, 0.3);
+        }
+
+        .cartao .numero {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+        
+        .cartao .descricao {
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+        
+        /* Documentação: Variação de estilo para os cartões de modalidades. */
+        .cartao.modalidade {
+            background-color: var(--cor-secundaria);
+            color: var(--cor-texto-escuro);
+        }
+        
+        .cartao.modalidade .numero { /* Usamos a classe numero para o ícone */
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--cor-primaria);
+        }
+
+        /* Documentação: Secção das Cotas de Patrocínio. */
+        .cotas-container {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cota {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 1.5rem;
+            flex-basis: 300px;
+            flex-grow: 1;
+            max-width: 350px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cota h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid;
+        }
+
+        .cota .valor {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--cor-primaria);
+            margin-bottom: 0.2rem;
+        }
+        
+        .cota .percentagem {
+             font-size: 0.9rem;
+             font-weight: 400;
+             margin-bottom: 1rem;
+        }
+
+        .cota ul {
+            list-style: none;
+            margin-top: 1rem;
+            flex-grow: 1; /* Faz a lista crescer para alinhar os rodapés */
+        }
+        
+        .cota ul li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .cota ul li::before {
+            content: '✓';
+            color: var(--cor-primaria);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Documentação: Cores específicas para cada cota. */
+        #cota-ouro h3 { border-color: var(--cor-ouro); color: var(--cor-ouro); }
+        #cota-prata h3 { border-color: var(--cor-prata); color: var(--cor-prata); }
+        #cota-bronze h3 { border-color: var(--cor-bronze); color: var(--cor-bronze); }
+
+        /* Documentação: Estilos do Rodapé. */
+        footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #ddd;
+            text-align: center;
+        }
+
+        footer h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        footer a {
+            color: var(--cor-primaria);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- DOCUMENTAÇÃO PARA IMPRESSÃO ---
+         * O bloco @media print abaixo contém regras que só são aplicadas
+         * quando o utilizador tenta imprimir a página ou guardá-la como PDF.
+         * Garante que o output seja exatamente uma folha A4 em paisagem.
+        */
+        @media print {
+            body {
+                padding: 0;
+                background-color: #fff; /* Fundo branco para impressão */
+            }
+
+            .container-a4 {
+                width: 297mm; /* Largura de A4 paisagem */
+                height: 200mm; /* Altura de A4 paisagem (um pouco menor para margens) */
+                max-width: none;
+                box-shadow: none;
+                border-radius: 0;
+                padding: 15mm;
+            }
+            
+            /* Ajustes de fonte para melhor legibilidade na impressão */
+            header h1 { font-size: 24pt; }
+            .titulo-seccao { font-size: 16pt; }
+            body, p, li { font-size: 10pt; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <main class="container-a4">
+        
+        <header>
+            <h1>Festival de Esportes da Bahia</h1>
+            <p class="subtitulo">Uma Celebração de Saúde, Lazer e Comunidade por todo o Estado</p>
+        </header>
+
+        <section class="sobre-evento">
+            <h2 class="titulo-seccao">Sobre o Evento</h2>
+            [cite_start]<p>O Festival de Esportes da Bahia é um evento itinerante e gratuito, desenhado para conectar pessoas e inspirar um estilo de vida mais ativo. [cite: 9, 10] [cite_start]O nosso foco é combater o sedentarismo e promover a integração social, com especial atenção ao público adulto e idoso, num ambiente seguro e acolhedor. [cite: 10, 11]</p>
+        </section>
+
+        <section class="numeros-projeto">
+            <h2 class="titulo-seccao">Números do Projeto</h2>
+            <div class="grelha">
+                <div class="cartao">
+                    <div class="numero">3</div>
+                    [cite_start]<div class="descricao">Etapas do Festival</div> [cite: 135]
+                </div>
+                <div class="cartao">
+                    <div class="numero">1.200</div>
+                    [cite_start]<div class="descricao">Participantes por Etapa</div> [cite: 127, 128]
+                </div>
+                 <div class="cartao">
+                    <div class="numero">3.600</div>
+                    [cite_start]<div class="descricao">Total de Participantes</div> [cite: 129, 130]
+                </div>
+                <div class="cartao">
+                    <div class="numero">417</div>
+                    [cite_start]<div class="descricao">Municípios Baianos</div> [cite: 136, 137]
+                </div>
+                <div class="cartao">
+                    <div class="numero">18+</div>
+                    [cite_start]<div class="descricao">Foco em Adultos e Idosos</div> [cite: 133]
+                </div>
+                 <div class="cartao">
+                    <div class="numero">100%</div>
+                    [cite_start]<div class="descricao">Gratuito para Participantes</div> [cite: 138, 139]
+                </div>
+            </div>
+        </section>
+
+        <section class="modalidades">
+             <h2 class="titulo-seccao">Modalidades Oferecidas</h2>
+             <div class="grelha">
+                 <div class="cartao modalidade">
+                     <div class="numero">👟</div>
+                     [cite_start]<div class="descricao"><strong>Corrida de Rua</strong><br>(5km e 10km)</div> [cite: 13]
+                 </div>
+                 <div class="cartao modalidade">
+                     <div class="numero">🚶‍♀️</div>
+                     [cite_start]<div class="descricao"><strong>Caminhada Participativa</strong><br>Para todas as idades</div> [cite: 19]
+                 </div>
+                 <div class="cartao modalidade">
+                     <div class="numero">🏓</div>
+                     [cite_start]<div class="descricao"><strong>Arena Lazer & Esporte</strong><br>(Tênis de Mesa / Ping-Pong)</div> [cite: 20]
+                 </div>
+             </div>
+        </section>
+
+        <section class="patrocinio">
+            <h2 class="titulo-seccao">Cotas de Patrocínio</h2>
+            <div class="cotas-container">
+                <div class="cota" id="cota-ouro">
+                    <h3>Cota Ouro</h3>
+                    [cite_start]<p class="valor">R$ 470.225,26</p> [cite: 64]
+                    [cite_start]<p class="percentagem">50% do Projeto</p> [cite: 64]
+                    <ul>
+                        [cite_start]<li>Naming rights do evento</li> [cite: 66]
+                        [cite_start]<li>Logo principal em todos os materiais</li> [cite: 65]
+                        [cite_start]<li>Ativações exclusivas e digitais</li> [cite: 67]
+                        [cite_start]<li>Stand na arena</li> [cite: 68]
+                        [cite_start]<li>Cobertura midiática preferencial</li> [cite: 69]
+                        [cite_start]<li>Relatório completo pós-evento</li> [cite: 70]
+                    </ul>
+                </div>
+                <div class="cota" id="cota-prata">
+                    <h3>Cota Prata</h3>
+                    [cite_start]<p class="valor">R$ 282.135,16</p> [cite: 72]
+                    [cite_start]<p class="percentagem">30% do Projeto</p> [cite: 73]
+                    <ul>
+                        [cite_start]<li>Logo em destaque nos materiais oficiais</li> [cite: 74]
+                        [cite_start]<li>Ativações presenciais e digitais</li> [cite: 74]
+                        [cite_start]<li>Conteúdo exclusivo para redes sociais</li> [cite: 75]
+                        [cite_start]<li>Menção em mídias locais</li> [cite: 76]
+                        [cite_start]<li>Relatório detalhado de resultados</li> [cite: 77]
+                    </ul>
+                </div>
+                <div class="cota" id="cota-bronze">
+                    <h3>Cota Bronze</h3>
+                    [cite_start]<p class="valor">R$ 188.090,10</p> [cite: 79]
+                    [cite_start]<p class="percentagem">20% do Projeto</p> [cite: 80]
+                    <ul>
+                        [cite_start]<li>Logo nos materiais do evento</li> [cite: 81]
+                        [cite_start]<li>Presença garantida nas três etapas</li> [cite: 82]
+                        [cite_start]<li>Ativação digital e menções em redes sociais</li> [cite: 83]
+                        [cite_start]<li>Certificado oficial de parceria</li> [cite: 84]
+                        [cite_start]<li>Relatório básico pós-evento</li> [cite: 85]
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <h4>Entre em contacto para fazer parte deste projeto!</h4>
+            <p>
+                [cite_start]<strong>Proponente:</strong> CLUBE DOS TENISTAS DA BAHIA (CTB) [cite: 42] <br>
+                <strong>Paulo Carneiro (CEO):</strong> <a href="mailto:paulo@ctb-ba.com.br">paulo@ctb-ba.com.br</a> | [cite_start]WhatsApp: (71) 98530-4903 [cite: 237]
+            </p>
+        </footer>
+
+    </main>
+
+</body>
+</html>
